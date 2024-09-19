@@ -1,8 +1,7 @@
-"""
-URL configuration for backend project.
+"""backend URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,8 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import RedirectView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('game/', include('channels_app.urls')),
 ]
+
+# Use static() to add URL mapping to serve static files during development (only)
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
