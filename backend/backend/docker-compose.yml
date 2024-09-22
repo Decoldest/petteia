@@ -3,7 +3,7 @@ services:
     build:
       context: .
     restart: unless-stopped
-    command: daphne multiplayer_channels_demo.asgi:application -u /usr/src/app/daphne.sock
+    command: daphne backend.asgi:application -u /usr/src/app/daphne.sock
     volumes:
       - $PWD:/usr/src/app
 

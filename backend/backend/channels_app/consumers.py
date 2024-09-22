@@ -10,6 +10,7 @@ class MultiplayerConsumer(WebsocketConsumer):
     players = {}
 
     def connect(self):
+        print("connected")
         self.player_id = str(uuid.uuid4())
         self.accept()
 
